@@ -1,5 +1,11 @@
-import { createPost } from '@/actions/actions';
-import React from 'react'
+"use client";
+
+import React, {useState, useEffect} from "react";
+import "froala-editor/css/froala_editor.pkgd.min.css";
+import "froala-editor/css/froala_style.min.css";
+import "froala-editor/js/plugins.pkgd.min.js";
+import FroalaEditor from "react-froala-wysiwyg";
+import { createPost } from "@/actions/actions";
 
 export default function Form() {
   return (
@@ -14,13 +20,19 @@ export default function Form() {
         required
         className="border rounded px-3 h-full"
       />
-      <textarea
-        name="body"
-        placeholder="Body content for new post"
-        className="border rounded px-3 py-2 h-full"
-        required
-        rows={6}
+
+      <FroalaEditor
+        tag="textarea"
+        config={{
+          placeholderText: "Title",
+          theme: "Gray",
+          classes: " bg-black",
+          heightMin: 300,
+          width: 1000,
+          background: "black",
+        }}
       />
+
       <button className="h-10 bg-blue-500 px-5 rounded text-white mb-10">
         Submit
       </button>
